@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS</title>
+</head>
+<body>
+  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+  <div class="controls">
+    <label for="spacing">Spacing:</label>
+    <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+    <label for="base">Base Color</label>
+    <input type="color" name="base" value="#ffc600">
+  </div>
+
+  <div class="img-holder">
+    <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  </div>
+
+  <style>
+
+    /*
+      misc styles, nothing to do with CSS variables
+    */
+
+    body {
+      text-align: center;
+    }
+
+    body {
+      background: #193549;
+      color: white;
+      font-family: 'helvetica neue', sans-serif;
+      font-weight: 100;
+      font-size: 50px;
+    }
+
+    .controls {
+      margin-bottom: 50px;
+    }
+
+    input {
+      width:100px;
+    }
+
+    :root {
+      --boxBgColor: #ffc600;
+      --boxPadding: 20px;
+      --boxImgBlur: 5px;
+    }
+
+    .img-holder {
+      background-color: var(--boxBgColor);
+      padding: var(--boxPadding);
+      float: left;
+    }
+
+    .img-holder img {
+      filter: blur(var(--boxImgBlur));
+    }
+  </style>
+
+  <script>
+    document.querySelector('input[name="spacing"]').addEventListener('input', function(){
+      console.log(this.value);
+      //document.body.style.setProperty('--boxPadding', this.value + 'px');
+      document.querySelector(':root').style.setProperty('--boxPadding', this.value + 'px');
+    });
+
+
+  </script>
+
+</body>
+</html>

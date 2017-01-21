@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+
+  <style>
+    html {
+      background:#018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
+      background-size:cover;
+      font-family:'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      font-size: 2rem;
+      display:flex;
+      flex:1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border:20px solid white;
+      border-radius:50%;
+      margin:50px auto;
+      position: relative;
+      padding:2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px) rotate(90deg); /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width:50%;
+      height:6px;
+      background:black;
+      position: absolute;
+      top:50%;
+      transform-origin: 100%;
+      transition: all 0.6s;
+      transition-timing-function: cubic-bezier(1, 0, 0, 1.02);
+    }
+
+  </style>
+
+  <script>
+
+    function getClockTime(date) {
+      return {
+        hours: date.getHours(),
+        minutes: date.getMinutes(),
+        seconds: date.getSeconds()
+      };
+    }
+
+    function positionHand(element, positions, number) {
+      var degreeIncrement = 360 / positions;
+      var numberDegree = number * degreeIncrement;
+      //document.querySelector(element).style.transform = 'rotate('+numberDegree+'deg)';
+      document.querySelector(element).style.transform = `rotate(${numberDegree}deg)`;
+
+      //if (element === '.second-hand') { console.log(numberDegree); }
+    }
+
+    function zeroPad(num, places) {
+      var zero = places - num.toString().length + 1;
+      return Array(+(zero > 0 && zero)).join("0") + num;
+    }
+
+    function displayTime(timeObject) {
+      console.log('Time: ', zeroPad(timeObject.hours, 2) + ':' + zeroPad(timeObject.minutes, 2) + ':' + zeroPad(timeObject.seconds, 2));
+    }
+
+    function setClockTime() {
+      setClockTime.cache = setClockTime.cache || {};
+      // Check to see if this value has already been saved in the cache
+      if (setClockTime.cache['seconds'] !== undefined) {
+        // If so, then calculate the value and save it in the cache
+        setClockTime.cache['seconds']++;
+
+        if (setClockTime.cache['seconds'] === 60) {
+          setClockTime.cache['seconds'] = 0;
+        }
+      } else {
+        setClockTime.cache['seconds'] = clockTime.seconds;
+      }
+
+      displayTime(clockTime);
+
+      positionHand('.hour-hand', 12, (clockTime.hours <= 12) ? clockTime.hours : clockTime.hours - 12);
+      positionHand('.min-hand', 60, clockTime.minutes);
+      positionHand('.second-hand', 60, clockTime.seconds++);
+
+
+    }
+
+    var clockTime = getClockTime(new Date("2011-04-20 15:59:58"));
+    //var clockTime = getClockTime(new Date());
+
+    // On Page Load
+    setClockTime();
+
+    window.setInterval(function() {
+      setClockTime();
+    }, 1000);
+
+
+
+
+  </script>
+</body>
+</html>
