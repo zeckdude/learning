@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Marionette Contact Manager</title>
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="./assets/css/main.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- HTML
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <span class="brand">Contact manager</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="app-container">
+      <div id="main-region" class="container">
+        <p>Here is static content in the web page. You'll notice that it gets replaced by our app as soon as we start it.</p>
+      </div>
+    </div>
+
+    <!-- Templates
+    ================================================== -->
+    <script type="text/template" id="static-template">
+      <p>This is text that was rendered by Marionette.</p>
+    </script>
+
+    <script type="text/template" id="different-static-template">
+      <p>Text from a different template...</p>
+    </script>
+
+
+    <!-- Javascript
+    ================================================== -->
+    <script src="./assets/js/vendor/jquery.js"></script>
+    <script src="./assets/js/vendor/bootstrap.js"></script>
+    <script src="./assets/js/vendor/underscore.js"></script>
+    <script src="./assets/js/vendor/backbone.js"></script>
+    <script src="./assets/js/vendor/backbone.marionette.js"></script>
+    <script src="./assets/js/app.js"></script>
+
+  </body>
+</html>

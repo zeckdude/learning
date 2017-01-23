@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Marionette Contact Manager</title>
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="./assets/css/main.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- HTML
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <span class="brand">Differences between Backbone and Marionette</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="app-container">
+      <div id="backbone-container" class="container span6"></div>
+
+      <div id="marionette-container" class="container span6">
+        <p>Marionette Content</p>
+      </div>
+    </div>
+
+    <!-- Templates
+    ================================================== -->
+    <script type="text/template" id="book-template">
+      <%= title %>
+    </script>
+
+
+    <!-- Javascript
+    ================================================== -->
+    <script src="./assets/js/vendor/jquery.js"></script>
+    <script src="./assets/js/vendor/bootstrap.js"></script>
+    <script src="./assets/js/vendor/underscore.js"></script>
+    <script src="./assets/js/vendor/backbone.js"></script>
+    <script src="./assets/js/vendor/backbone.marionette.js"></script>
+    <script src="./assets/js/backbone-implementation.js"></script>
+    <script src="./assets/js/marionette-implementation.js"></script>
+
+  </body>
+</html>
