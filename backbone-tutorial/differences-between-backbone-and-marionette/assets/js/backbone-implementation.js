@@ -9,8 +9,17 @@
       this.render();
     },
 
+    displayHeader: function() {
+      this.$el.find('[data-ui~=header-region]').html('<h3>Backbone Implementation</h3>');
+    },
+
+    displayBooks: function() {
+      this.$el.find('[data-ui~=main-region]').html(this.booksView.render().el);
+    },
+
     render: function() {
-      this.$el.append(this.booksView.render().el);
+      this.displayHeader();
+      this.displayBooks();
       return this;
     }
   });
@@ -19,6 +28,15 @@
     tagName: "li",
 
     template: _.template($("#book-template").html()),
+
+    events: {
+      "click p": "alertInfo" // Event to run on action performed within the view
+    },
+
+    alertInfo: function(e) {
+      var modelProperty = $(e.currentTarget).attr('data-property');
+      alert(this.model.get(modelProperty));
+    },
 
     render: function() {
       var html = this.template(this.model.toJSON());
@@ -30,7 +48,7 @@
   var BooksView = Backbone.View.extend({
     tagName: 'ul',
 
-    displayBooks: function() {
+    displaySingleBooks: function() {
       var self = this;
       this.model.each(function(book){
         var bookView = new BookView({ model: book });
@@ -39,7 +57,7 @@
     },
 
     render: function() {
-      this.displayBooks();
+      this.displaySingleBooks();
       return this;
     }
   });

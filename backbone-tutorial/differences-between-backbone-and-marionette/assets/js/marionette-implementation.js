@@ -67,10 +67,11 @@
   // Run before app starts and initializers are executed (http://marionettejs.com/docs/v2.3.1/marionette.application.html#application-events)
   MarionetteApp.on('before:start', function() {
     var AppView = Marionette.LayoutView.extend({
-      el: "#app-container",
+      el: "#marionette-container",
 
       regions: {
-        main: "#marionette-container"
+        header: '[data-ui~=header-region]',
+        main: '[data-ui~=main-region]'
       }
     });
 
@@ -85,6 +86,8 @@
 
     // Render the view in the region specified
     regions.main.show(booksView);
+    //debugger;
+    regions.header.$el.html('<h3>Marionette Implementation</h3>');
   });
 
   MarionetteApp.start();
