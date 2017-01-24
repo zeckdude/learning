@@ -24,14 +24,27 @@
       <div id="backbone-container" class="container span6"></div>
 
       <div id="marionette-container" class="container span6">
-        <p>Marionette Content</p>
+        <div id="main-region">
+          <p>Here is static content in the web page. You'll notice that it
+          gets replaced by our app as soon as we start it.</p>
+        </div>
       </div>
     </div>
 
     <!-- Templates
     ================================================== -->
+    <script type="text/template" id="books-template">
+      <h2>Books</h2>
+    </script>
+
     <script type="text/template" id="book-template">
-      <%= title %>
+      <p data-property="title"><strong>Title:</strong> <%= title %></p>
+      <p data-property="author"><strong>Author:</strong> <%= author %></p>
+      <p data-property="publishYear"><strong>Year Published:</strong> <%= publishYear %></p>
+    </script>
+
+    <script type="text/template" id="static-template">
+      Hello there.
     </script>
 
 
@@ -42,6 +55,7 @@
     <script src="./assets/js/vendor/underscore.js"></script>
     <script src="./assets/js/vendor/backbone.js"></script>
     <script src="./assets/js/vendor/backbone.marionette.js"></script>
+    <script src="./assets/js/app-data.js"></script>
     <script src="./assets/js/backbone-implementation.js"></script>
     <script src="./assets/js/marionette-implementation.js"></script>
 

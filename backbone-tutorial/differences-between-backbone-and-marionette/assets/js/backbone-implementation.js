@@ -1,7 +1,7 @@
-//(function() {
-//  "use strict";
+(function() {
+ "use strict";
 
-  AppView = Backbone.View.extend({
+  var AppView = Backbone.View.extend({
     el: '#backbone-container',
 
     initialize: function () {
@@ -27,7 +27,7 @@
     }
   });
 
-  BooksView = Backbone.View.extend({
+  var BooksView = Backbone.View.extend({
     tagName: 'ul',
 
     displayBooks: function() {
@@ -44,26 +44,6 @@
     }
   });
 
-  var Book = Backbone.Model.extend();
+  var appView = new AppView();
 
-  var Books = Backbone.Collection.extend({
-    model: Book
-  });
-
-  var books = new Books([
-    new Book({ title: 'aaa' }),
-    new Book({ title: 'bbb' }),
-    new Book({ title: 'ccc' })
-  ]);
-
-  appView = new AppView();
-
-  // var booksView = new BooksView({
-  //   el: '#backbone-container',
-  //   model: books
-  // });
-
-  //
-  // booksView.render();
-
-//})();
+})();
