@@ -5,7 +5,7 @@
     el: '#backbone-container',
 
     initialize: function () {
-      this.booksView = new BooksView({ model: books });
+      this.billsView = new BillsView({ model: bills });
       this.render();
     },
 
@@ -13,21 +13,21 @@
       this.$el.find('[data-ui~=header-region]').html('<h3>Backbone Implementation</h3>');
     },
 
-    displayBooks: function() {
-      this.$el.find('[data-ui~=main-region]').html(this.booksView.render().el);
+    displayBills: function() {
+      this.$el.find('[data-ui~=main-region]').html(this.billsView.render().el);
     },
 
     render: function() {
       this.displayHeader();
-      this.displayBooks();
+      this.displayBills();
       return this;
     }
   });
 
-  var BookView = Backbone.View.extend({
+  var BillView = Backbone.View.extend({
     tagName: "li",
 
-    template: _.template($("#book-template").html()),
+    template: _.template($("#bill-template").html()),
 
     events: {
       "click p": "alertInfo" // Event to run on action performed within the view
@@ -45,19 +45,19 @@
     }
   });
 
-  var BooksView = Backbone.View.extend({
+  var BillsView = Backbone.View.extend({
     tagName: 'ul',
 
-    displaySingleBooks: function() {
+    displaySingleBills: function() {
       var self = this;
-      this.model.each(function(book){
-        var bookView = new BookView({ model: book });
-        self.$el.append(bookView.render().$el);
+      this.model.each(function(bill){
+        var billView = new BillView({ model: bill });
+        self.$el.append(billView.render().$el);
       });
     },
 
     render: function() {
-      this.displaySingleBooks();
+      this.displaySingleBills();
       return this;
     }
   });

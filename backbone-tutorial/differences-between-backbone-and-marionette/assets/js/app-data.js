@@ -1,32 +1,34 @@
-var Book = Backbone.Model.extend({
+var Bill = Backbone.Model.extend({
   defaults: {
-    title: 'Not Provided',
-    author: 'Not Provided',
-    publishYear: 'Not Provided',
+    name: 'Not Provided',
+    institution: 'Not Provided',
+    statementGenerationDayOfMonth: 'Not Provided',
+    statementDueDay: 'Not Provided'
   }
 });
 
-var Books = Backbone.Collection.extend({
-  model: Book
+var Bills = Backbone.Collection.extend({
+  model: Bill,
+  comparator: "institution"
 });
 
-var book = new Book({
-  title: 'The Great Santini',
-  author: 'Pat Conroy'
-});
-
-var books = new Books([
-  new Book({
-    title: 'The Great Santini',
-    author: 'Pat Conroy',
-    publishYear: 1976
-  }),
-  new Book({
-    title: 'To Kill a Mockingbird ',
-    author: 'Harper Lee'
-  }),
-  new Book({
-    title: 'The Man Without Qualities ',
-    publishYear: 1988
-  })
+var bills = new Bills([
+  {
+    name: 'Auto Loan',
+    institution: 'Unify Credit Union',
+    statementGenerationDayOfMonth: 3,
+    statementDueDay: 25
+  },
+  {
+    name: 'Netflix Subscription',
+    institution: 'Netflix',
+    statementGenerationDayOfMonth: 1,
+    statementDueDay: 11
+  },
+  {
+    name: 'Rent',
+    institution: 'Decron Property Management',
+    statementGenerationDayOfMonth: 1,
+    statementDueDay: 15
+  }
 ]);

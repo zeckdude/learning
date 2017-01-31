@@ -28,23 +28,21 @@
 
     <!-- Templates
     ================================================== -->
-    <script type="text/template" id="static-template">
-      <p>This is text that was rendered by Marionette.</p>
-    </script>
-
-    <script type="text/template" id="different-static-template">
-      <p>Text from a different template...</p>
+    <script type="text/template" id="contact-list-item">
+      <%- firstName %> <%- lastName %>
     </script>
 
 
     <!-- Javascript
     ================================================== -->
-    <script src="./assets/js/vendor/jquery.js"></script>
+    <!-- <script src="./assets/js/vendor/jquery.js"></script>
     <script src="./assets/js/vendor/bootstrap.js"></script>
     <script src="./assets/js/vendor/underscore.js"></script>
     <script src="./assets/js/vendor/backbone.js"></script>
-    <script src="./assets/js/vendor/backbone.marionette.js"></script>
-    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/vendor/backbone.marionette.js"></script> -->
+    <!-- <script src="./assets/js/app.js"></script> -->
+
+    <script src="./assets/js/vendor/require.js" data-main="assets/js/main"></script>
 
   </body>
 </html>

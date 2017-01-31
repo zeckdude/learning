@@ -34,14 +34,15 @@
 
     <!-- Templates
     ================================================== -->
-    <script type="text/template" id="books-template">
-      <h2>Books</h2>
+    <script type="text/template" id="bills-template">
+      <h2>Bills</h2>
     </script>
 
-    <script type="text/template" id="book-template">
-      <p data-property="title"><strong>Title:</strong> <%= title %></p>
-      <p data-property="author"><strong>Author:</strong> <%= author %></p>
-      <p data-property="publishYear"><strong>Year Published:</strong> <%= publishYear %></p>
+    <script type="text/template" id="bill-template">
+      <p data-property="name"><strong>Name:</strong> <%= name %></p>
+      <p data-property="institution"><strong>Institution:</strong> <%= institution %></p>
+      <p data-property="statementGenerationDayOfMonth"><strong>Statement generation day of the month:</strong> <%= statementGenerationDayOfMonth %></p>
+      <p data-property="statementDueDay"><strong>Statement due day of the month:</strong> <%= statementDueDay %></p>
     </script>
 
     <script type="text/template" id="static-template">
