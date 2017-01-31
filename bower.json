@@ -1,0 +1,17 @@
+{
+  "name": "learning",
+  "homepage": "https://github.com/zeckdude/learning",
+  "authors": [
+    "Chris Seckler <chrisseckler@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
