@@ -49,7 +49,11 @@ app.get( '/index', function( request, response ) {
 
 
 app.post('/products', function(request, response) {
-  response.send({ products: products });
+  var productsHTMLString = products.reduce(function(generatedString, product) {
+    return generatedString + nunjucks.render( '_item-row.html', { id: product.id, name: product.name } );
+  }, '');
+
+  response.send(productsHTMLString);
 });
 
 app.listen(PORT, function() {

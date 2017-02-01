@@ -2,10 +2,13 @@ $(function() {
   // READ/GET
   $('#get-button').on('click', function() {
     $.ajax({
-      url: '/productsfdgdfg',
+      url: '/products',
       contentType: 'application/json',
-      success: function(response) {
-        console.log(response);
+      type: 'POST',
+      success: function(productsHTMLString) {
+        var $tableBody = $('#products-table-body');
+        $tableBody.html('');
+        $tableBody.append(productsHTMLString);
       }
     });
   });
