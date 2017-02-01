@@ -1,8 +1,10 @@
 $(function() {
-  nunjucks.configure( '../views', {
-      autoescape: true,
-      cache: false
-  });
+  // nunjucks.configure( '../views', {
+  //     autoescape: true,
+  //     cache: false
+  // });
+
+  var env = new nunjucks.Environment(new nunjucks.WebLoader('../views'));
 
   function renderProducts() {
     $.ajax({
@@ -14,9 +16,11 @@ $(function() {
         var $tableBody = $('#products-table-body');
         $tableBody.html('');
 
+        var template = env.getTemplate('_item-row.html');
+
         response.products.forEach(function(product) {
           $tableBody.append(
-            nunjucks.render( '_item-row.html', { id: product.id, name: product.name } )
+            nunjucks.render( template, { id: product.id, name: product.name } )
           );
         });
       }
@@ -31,6 +35,11 @@ $(function() {
     event.preventDefault();
 
     var $createInput = $('#create-input');
+
+    if ($createInput.val() === '') {
+      alert('Please enter a value');
+      return;
+    }
 
     $.ajax({
       url: '/products',

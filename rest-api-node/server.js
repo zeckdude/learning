@@ -18,8 +18,10 @@ var products = [
   }
 ];
 
+var currentId = 2;
+
 // Define port to run server on
-var PORT = process.env.PORT || 3006;
+var PORT = process.env.PORT || 3007;
 
 // Configure Nunjucks
 var _templates = process.env.NODE_PATH ? process.env.NODE_PATH + '/app/views' : 'app/views' ;
@@ -66,8 +68,10 @@ app.get('/products', function(request, response) {
 
 // INSERT into products
 app.post('/products', function(request, response) {
+  currentId++;
+
   products.push({
-    id: products.length++,
+    id: currentId,
     name: request.body.name
   });
 
