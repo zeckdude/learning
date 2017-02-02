@@ -10,9 +10,8 @@ $(function() {
     $.ajax({
       url: '/products',
       contentType: 'application/json',
-      type: 'GET',
+      method: 'GET',
       success: function(response) {
-        console.log(response);
         var $tableBody = $('#products-table-body');
         $tableBody.html('');
 
@@ -26,6 +25,8 @@ $(function() {
       }
     });
   }
+
+  renderProducts();
 
   // READ/GET
   $('#get-button').on('click', renderProducts);
@@ -44,12 +45,47 @@ $(function() {
     $.ajax({
       url: '/products',
       contentType: "application/json",
-      type: 'POST',
+      method: 'POST',
       data: JSON.stringify({
         name: $createInput.val()
       }),
       success: function(response) {
         $createInput.val('');
+        renderProducts();
+      }
+    });
+  });
+
+  // UPDATE/PUT
+  $('table').on('click', '.update-button', function() {
+    var $thisRow = $(this).closest('tr');
+    var productId = Number($thisRow.find('.product-id').text());
+    var newName = $thisRow.find('.product-name').val();
+
+    $.ajax({
+      url: '/products/' + productId,
+      contentType: "application/json",
+      method: 'PUT',
+      data: JSON.stringify({
+        newName: newName
+      }),
+      success: function(response) {
+        renderProducts();
+      }
+    });
+  });
+
+  // DELETE
+  $('table').on('click', '.delete-button', function() {
+    var $thisRow = $(this).closest('tr');
+    var productId = Number($thisRow.find('.product-id').text());
+
+    $.ajax({
+      url: '/products/' + productId,
+      contentType: "application/json",
+      method: 'DELETE',
+      success: function(response) {
+        console.log(response);
         renderProducts();
       }
     });

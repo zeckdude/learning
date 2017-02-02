@@ -57,16 +57,12 @@ app.get( '/index', function( request, response ) {
 } ) ;
 
 
-// SELECT all products
+// GET (SELECT all products)
 app.get('/products', function(request, response) {
-  // var productsHTMLString = products.reduce(function(generatedString, product) {
-  //   return generatedString + nunjucks.render( '_item-row.html', { id: product.id, name: product.name } );
-  // }, '');
-
   response.send( { products: products } );
 });
 
-// INSERT into products
+// POST (INSERT into products)
 app.post('/products', function(request, response) {
   currentId++;
 
@@ -76,6 +72,47 @@ app.post('/products', function(request, response) {
   });
 
   response.send({ status: 'success' });
+});
+
+// PUT (UPDATE products WHERE id = ?)
+app.put('/products/:id', function(request, response) {
+  var id = Number(request.params.id);
+  var newName = request.body.newName;
+  var result;
+
+  var productToUpdate = products.find(function(product){
+    return product.id === id;
+  });
+
+  if (typeof productToUpdate !== 'undefined') {
+    productToUpdate.name = newName;
+    // result = { status: 'success' };
+    response.send({ status: 'success' });
+  } else {
+    response.status(500).json({
+      status: 'failed',
+      message: 'There is no product with the given id'
+    });
+  }
+});
+
+// DELETE (DELETE products WHERE id = ?)
+app.delete('/products/:id', function(request, response) {
+  var id = Number(request.params.id);
+
+  var productToDeleteIndex = products.findIndex(function(product){
+    return product.id === id;
+  });
+
+  if (productToDeleteIndex !== -1) {
+    products.splice(productToDeleteIndex, 1);
+    response.send({ status: 'success' });
+  } else {
+    response.status(500).json({
+      status: 'failed',
+      message: 'There is no product with the given id'
+    });
+  }
 });
 
 
