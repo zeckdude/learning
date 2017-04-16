@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Define Variables and Constants
+# White space is not allowed on either side of equals sign
+
+# constant
+declare -r NAME="Chris"
+
+# variable
+age=31
+
+echo "Your name is $name, you're $age years old, and you're from $city"

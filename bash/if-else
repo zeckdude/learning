@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Conditional Statements
+# List of conditional expressions: http://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html
+
+read -p "How old are you? " age
+
+if [ $age -ge 16 ]
+then
+  echo "You can legally drive"
+elif [ $age -eq 15 ]
+then
+  echo "You can drive next year"
+else
+  echo "You can't drive"
+fi
+
+
+read -p "How old does it say on your id ? " idAge
+
+if (($idAge >= 21))
+then
+  echo "You can legally drink"
+elif (($idAge == 20))
+then
+  echo "You can drink next year"
+else
+  echo "You can't drink"
+fi

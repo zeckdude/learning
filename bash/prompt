@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Prompt the user for information and then use that information
+read -p "What is your name? " name
+read -p "What is your age? " age
+read -p "What city are you from? " city
+
+echo "Your name is $name, you're $age years old, and you're from $city"
