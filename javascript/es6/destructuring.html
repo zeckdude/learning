@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Function - Spread Operator</title>
+
+  <script type="text/javascript">
+
+    // Destructuring an array. Each value in the array are assigned to the provided variable names. The last one is an example of using a default value.
+    // let relatives = ['Gloria', 'Andy', 'Anton'];
+    // let [wife, brother, father, mother = 'Mine'] = relatives;
+    //
+    // console.log(wife, brother, father, mother);
+
+    // Destructuring an object
+    let relatives = {
+      wife: 'Gloria',
+      brother: 'Andy',
+      father: 'Anton',
+      mother: 'Mine'
+    }
+
+    // Explicitly assigning a variable name to specific properties
+    let { wife: wifey, brother: bro, father: pops } = relatives;
+    console.log(wifey, bro, pops);
+
+    // Assigning the object values to variables that have the same name as the properties
+    let {wife, brother, father, mother} = relatives;
+    console.log(wife, brother, father, mother);
+
+    // Example of using descructuring on function arguments
+    function makeSound({ species = 'animal', sound }) {
+      console.log('The ' + species + ' says ' + sound + '!');
+    };
+
+    makeSound({
+      weight: 23,
+      sound: 'woof'
+    });
+
+  </script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Function - Spread Operator</title>
+
+  <script type="text/javascript">
+
+    // Spread Operator
+    function announceNumbers(a, b, c, d) {
+      console.log('The numbers are: ' + a + ', ' + b + ', ' + c + ', and ' + d);
+    }
+
+    let numbers = [1, 10, 99, -5];
+
+    // Pass elements of an array as arguments to a function
+    announceNumbers(...numbers);
+
+    // Add the elements of an existing array into a new array
+    let moreNumbers = [...numbers, -30, 44];
+    console.log(moreNumbers);
+
+    // Combine two arrays
+    let anotherNumberList = [68, 3, 72, 9];
+    let evenMoreNumbers = [...moreNumbers, ...anotherNumberList]; // Same as moreNumbers.concat(anotherNumberList)
+    console.log(evenMoreNumbers);
+
+    // Copy an array
+    let numbers = [1,2,3];
+    let numbers2 = [...numbers]; // Same as numbers.slice() which copies an array instead of referencing the previous array
+
+
+    // Rest Operator
+
+    // When the `...` syntax is used as an parameter in a function definition, then it is the rest operator and means that
+    // any arguments that are provided at that point onward will be accessible within the function by the argument name as
+    // an array containing those values
+    function createArray(...args) {
+      return args;
+    }
+
+    console.log(createArray(2,5,6));
+
+  </script>
+
+</head>
+<body>
+
+</body>
+</html>
