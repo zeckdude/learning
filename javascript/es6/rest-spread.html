@@ -14,7 +14,7 @@
     let numbers = [1, 10, 99, -5];
 
     // Pass elements of an array as arguments to a function
-    announceNumbers(...numbers);
+    announceNumbers(...numbers); // Same as announceNumbers.apply(null, numbers)
 
     // Add the elements of an existing array into a new array
     let moreNumbers = [...numbers, -30, 44];

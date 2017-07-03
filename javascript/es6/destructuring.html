@@ -7,10 +7,10 @@
   <script type="text/javascript">
 
     // Destructuring an array. Each value in the array are assigned to the provided variable names. The last one is an example of using a default value.
-    // let relatives = ['Gloria', 'Andy', 'Anton'];
-    // let [wife, brother, father, mother = 'Mine'] = relatives;
-    //
-    // console.log(wife, brother, father, mother);
+    let relatives = ['Gloria', 'Andy', 'Anton'];
+    let [wife, brother, father, mother = 'Mine'] = relatives;
+
+    console.log(wife, brother, father, mother);
 
     // Destructuring an object
     let relatives = {
@@ -18,7 +18,7 @@
       brother: 'Andy',
       father: 'Anton',
       mother: 'Mine'
-    }
+    };
 
     // Explicitly assigning a variable name to specific properties
     let { wife: wifey, brother: bro, father: pops } = relatives;
@@ -31,7 +31,7 @@
     // Example of using descructuring on function arguments
     function makeSound({ species = 'animal', sound }) {
       console.log('The ' + species + ' says ' + sound + '!');
-    };
+    }
 
     makeSound({
       weight: 23,
