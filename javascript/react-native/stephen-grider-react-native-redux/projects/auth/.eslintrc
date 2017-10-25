@@ -1,0 +1,11 @@
+{
+  "extends": "rallycoding",
+  "rules": {
+    "max-len": [
+      "error",
+      {
+        "ignoreComments": true 
+      }
+    ]
+  }
+}

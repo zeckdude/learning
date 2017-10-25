@@ -1,0 +1,7 @@
+{
+  "extends": "rallycoding",
+  "rules": {
+    "max-len": ["error", { "ignoreComments": true }],
+    "arrow-body-style": 0,
+  }
+}

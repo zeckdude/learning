@@ -1,0 +1,2 @@
+1 - Applying CSS transitions to elements with React: https://www.youtube.com/watch?v=ztvNwFV0Ai0
+2 - 

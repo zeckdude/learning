@@ -1,0 +1,67 @@
+/*
+  Possible Animations:
+  enter
+  leave
+  appear Must set transitionAppear={true} on animation component
+*/
+
+.order-enter
+  transform: translateX(-120%)
+  max-height: 0
+  padding 0 !important
+  opacity 0
+
+  &.order-enter-active
+    transition: all 500ms
+    max-height 60px
+    padding 2rem 0 !important
+    transform: translateX(0)
+    opacity 1
+
+.order-leave
+  transform: translateX(0);
+
+  &.order-leave-active
+    transition: all 250ms
+    transform: translateX(120%);
+    max-height: 0
+    padding 0
+
+.count-enter
+  transition all 250ms
+  transform: translateY(100%); // start off screen
+  &.count-enter-active
+    transform: translateY(0); // put it in its normal resting spot
+
+.count-leave
+  transition: all 500ms
+  position: absolute
+  left 0
+  bottom 0
+  transform: translateY(0); // start in the normal resting spot
+  &.count-leave-active
+    transform: translateY(-100%); // end off screen
+
+
+
+
+
+
+
+
+
+
+
+
+// Starting state of Enter animation
+.fade-enter
+  margin-left: -100%
+  max-height: 0
+  padding 0 !important
+
+// Ending state of Leave animation
+.fade-enter-active
+  margin-left 0
+  transition: 5s ease-in all
+  max-height 60px
+  padding 2rem 0 !important
