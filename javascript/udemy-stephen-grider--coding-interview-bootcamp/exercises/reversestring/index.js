@@ -7,7 +7,6 @@
 //   reverse('Greetings!') === '!sgniteerG'
 
 function reverse(str) {
-  debugger;
   // Change String to array, reverse it using reverse() method, change array to String
   // return str.split('').reverse().join('');
 
